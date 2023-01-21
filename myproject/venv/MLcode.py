@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import Flask, url_for
+from flask import url_for, request, jsonify
 
 import random
 import time
@@ -13,15 +13,17 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score  
 import joblib
 
-
-
 app = Flask(__name__)
 
-@app.route('/predict/')
-def makeAnomalyPrediction(predictValue):
+@app.route('/predict',methods=  ['POST'])
+def makePrediction():
+   json_data = request.get_json()
+   predictValue = json_data['to_predict'] 
+   #make predictions using the model
    model = joblib.load('Prediction-Model.joblib')
    prediction = model.predict(predictValue)
-   return prediction
+
+   return jsonify({"response":prediction.tolist(),"requested_value":predictValue})
   
 
 @app.route('/train')
@@ -34,14 +36,15 @@ def trainPredictionModel():
    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
    model = RandomForestClassifier()
-   model.fit(X_train, y_train)
+   model.fit(X_train.values, y_train.values)
 
-   score = model.score(X_test, y_test)
+   score = model.score(X_test.values, y_test.values)
    print(f'Accuracy: {score:.2f}')
 
    joblib.dump(model,'Prediction-Model.joblib')
 
-   return 'prediction model trained'
+   return ['prediction model trained',score]
+
 
 @app.route('/genarate')
 def genarateDataSet():
@@ -60,9 +63,6 @@ def genarateDataSet():
       df = pd.DataFrame.from_dict(data)
       df.to_csv("device_data.csv")
    return 'Data Set Generated'
-
-with app.test_request_context():
-  print(url_for('makeAnomalyPrediction', predictValue = 0))
 
    
 if __name__ == '__main__':

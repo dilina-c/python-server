@@ -1,0 +1,4 @@
+# flyctl launch added from .gitignore
+device_data.csv
+Prediction-Model.joblib
+fly.toml
