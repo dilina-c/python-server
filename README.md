@@ -8,3 +8,4 @@ This server has three routes:
 3. /genarate: It generates a dataset and saves it to a csv file 'device_data.csv'.
 
 This server can accept JSON data via a POST request at the /predict route and respond with a JSON data containing the prediction and requested value. It can also train a prediction model using a provided csv file and generate a dataset.
+(updated-23/01/2023)
