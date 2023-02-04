@@ -1,10 +1,7 @@
 from flask import Flask
 from flask import url_for, request, jsonify
 
-import random
-import time
-import json
-import datetime
+import random, time, json, datetime
 
 import numpy as np
 import pandas as pd
@@ -12,6 +9,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score  
 import joblib
+
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -64,6 +63,8 @@ def genarateDataSet():
       df.to_csv("device_data.csv")
    return 'Data Set Generated'
 
-   
 if __name__ == '__main__':
-   app.run()
+   app.run(port=8080, debug=False)
+   # http_server = WSGIServer(('', 8080), app)
+   # http_server.serve_forever()
+   #serve(app, host="0.0.0.0", port=8080)
