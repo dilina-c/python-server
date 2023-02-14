@@ -7,13 +7,25 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score  
 import joblib
+from datetime import datetime, timedelta
+import firebase_admin
+from firebase_admin import credentials, firestore
 
 app = Flask(__name__)
 
 @app.route('/predict',methods=  ['POST'])
 def makePrediction():
+
+   predictValue = [[]]
+
    json_data = request.get_json()
-   predictValue = json_data['to_predict'] 
+   predictData= json_data.to_dict()
+
+   day_of_week = datetime.fromtimestamp(predictData["time"]).weekday()
+   time_of_day = datetime.fromtimestamp(predictData["time"]).strftime("%I") 
+
+   predictValue = [[day_of_week,time_of_day]]
+
    #make predictions using the model
    model = joblib.load('Prediction-Model.joblib')
    prediction = model.predict(predictValue)
@@ -42,20 +54,37 @@ def trainPredictionModel():
 
 @app.route('/genarate')
 def genarateDataSet():
+
+   cred = credentials.Certificate(
+    "smart-adapter-test1-firebase-adminsdk-9nc3j-31f034dae2.json")
+   firebase_admin.initialize_app(cred)
+
+   db = firestore.client()
+
    data = []
-   for i in range(0, 100):
-      datum = {
-         "voltage": random.random(),
-         "current": random.random(),
-         "timestamp": time.time() + random.random()*10000000
-      }
-      datum["isOn"] = True if datum["current"] > 0.5 else False
-      datum["day_of_week"] = datetime.datetime.fromtimestamp(datum["timestamp"]).weekday()
-      datum["time_of_day"] = datetime.datetime.fromtimestamp(datum["timestamp"]).strftime("%I")
-      data.append(datum)
+   now = datetime.now()
+   three_months_ago = now - timedelta(days=30)
+
+   devices_col_ref = db.collection(u'devices')
+
+   for device_doc_snap in devices_col_ref.stream():
+      device_id = device_doc_snap.id
       
-      df = pd.DataFrame.from_dict(data)
-      df.to_csv("device_data.csv")
+      readings_col_ref = device_doc_snap.reference.collection(u'readings')
+      for reading_doc_snap in readings_col_ref.where(u"time", u">=", three_months_ago.timestamp()).stream():
+         # print(reading_doc_snap.to_dict())
+         datum = reading_doc_snap.to_dict()
+
+         datum["isOn"] = True if datum["i"] > 0.4 else False
+         datum["day_of_week"] = datetime.fromtimestamp(datum["time"]).weekday()
+         datum["time_of_day"] = datetime.fromtimestamp(
+         datum["time"]).strftime("%I")
+
+         data.append(datum)
+         # print(data)
+         df = pd.DataFrame.from_dict(data)
+         df.to_csv(device_id + ".csv")
+         print(df)
    return 'Data Set Generated'
 
 if __name__ == '__main__':
