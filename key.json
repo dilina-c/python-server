@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "smart-power-adapter-3a443",
+  "private_key_id": "a276da6c4563aae5efa17c05c35a76f8a47c25f7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC6r4W7TqlZp+rC\nfcYGqapYMzy5EVqOmcpnvb5VO0MLpGEjmPP1kc8sgPVKUwzQdSb8F+lSIVXoIwLw\nxN/eNk6/UYoCh5bhX2WiJ25DN5cnuYxGKzZyF3VjFenFU/DHVuZme6fhz1YACEHV\nU52pOjTD2nCvB43VoU7SwdfAPxlyDUedsPgmmWK1wRILBzd/2OEo9f8XufBFGhrO\nxySRVg0kS1/8H22hLNu2aJCfQGWO1bImceHCR0gygW7Drwsqvt3zvrgiHMmHXnmP\n7opOAewierFbVKLMcLEix7MZ/EKdNexn0O9aRjYz3s3xRLlmL/RPmI+femm27M74\n/gd4uwHTAgMBAAECggEADTi4JnNkQBLJ6BtjRn6Gr3d1gf/uI3JV6PIBxGSNk4oB\nTTWcdZRtkU/Sz4BBRJQ/fhQtdKEixe2Q3D99QW4kNp2OQi6bK3wHpSvYvc72mBwm\niKOv1/W8XRektlKDF4Maj0CLu8zk4Ny02OhynpUePo6+c078JxilDf0njBiL801J\nSJy6FZ4c2p/33G/yQ/BG+L2XrkkZkX7CIuDqPgf1+igZJqhOEwwbFzPgQBD+QoSu\nTFRY1nsU46BZBehRIFtZNAM/LwFQz44HRd6MSZB7kvn+zjgN72QRdYcLIrYadCJw\nGXfnR2t3wzOyrAjrgC/dnSoP96Sz0zbld50wNyyiMQKBgQD2ZIjZofY9rNCE50/K\nSxiBnhym2uKS2m0F+We062Ai3dYYz7rqe5HzuXS6l/V5lz8h2QzEwAtsRKdrFrDt\noaVVkr2jpkGkD9SCIEexqiEMUKf6RFj47zDoihfN9DgJemgMMTO01TA4cfFHHHf+\ndfyRA6LmG3LrOBwyZJcdVTZ4owKBgQDB9v+Ky44h4MTz0KMCGiojF4t4goN7m80C\nNhViagYhUCIywIpO10aRNoIVEsdqTE8Q3fmGayt8QIPo6WVOx20BgYxVopMY1/xP\nvohdXQuHWppGyIF81WOyjpDqtD7Ef5uW6wZP39tTBGQr0DeB7hy69pkiEoMDudFt\nztt3NEP1EQKBgEKz6NByJkWAGVtBe7paJiJA+aS6MQhslYM+h7LU3cvSnnlNE18T\nYOnIVS+Gn+/w4Ch7qBdDnlQLKf+1vuQ2FJpcBXbeNXsCxhcMQhx44EWDOFZqVmPd\n7TGm4NbivKDkQHK8hzD3XfyJ7DXCIUIEEwH3KAx/ddbz8744uSg5v2tdAoGBALX0\nZj6mu5uuRjROiUxEjTjEMpMHJB7FxiiH4cGjokKH8LzZgCV7r3gzwQ3Rwv5FvXoe\nMaDWUkHKJ7RLljyzud9KzwHac9E/dDK+kx+6VEFSTh2OpGIdr9vl/64dDjC5YJTP\nvukZH58eJHYxapDZdVwyTu72nK7XFs7C2YBWqFVxAoGAXBxsOH9SDKt8haX+RgEf\niERckJSVQVSnE1eixoBw9q0s2EZvzKYbPHV/+IAZbxAspZaM/aQAMz/TjFM2klHf\nY8D0RqGBLG5imdz3dalXaQPI9ZqVinohWgIcQthw7lL5385sdfyUiMgjooRxS8zC\n/6xdeB7vZ6NSAHAQYU6XnTs=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-4gp49@smart-power-adapter-3a443.iam.gserviceaccount.com",
+  "client_id": "100753132280423656868",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-4gp49%40smart-power-adapter-3a443.iam.gserviceaccount.com"
+}
